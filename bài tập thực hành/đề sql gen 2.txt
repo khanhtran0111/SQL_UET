@@ -1,0 +1,48 @@
+Câu 1: Tổng số lượng sản phẩm tồn kho và thông tin sản phẩm (2 điểm)
+Hiển thị:
+
+Mã sản phẩm (productCode)
+Tên sản phẩm (productName)
+Dòng sản phẩm (productLine)
+Tổng số lượng tồn kho (quantityInStock)
+Sắp xếp kết quả theo dòng sản phẩm tăng dần và tổng số lượng tồn kho giảm dần.
+
+Câu 2: Thống kê đơn hàng và doanh thu (3 điểm)
+Hiển thị thông tin sau cho từng tháng trong năm 2005:
+
+Tháng (Month)
+Số lượng đơn hàng
+Tổng doanh thu (tính từ quantityOrdered * priceEach)
+Sắp xếp kết quả theo tháng tăng dần.
+
+Gợi ý: Sử dụng hàm MONTH() để trích xuất tháng từ orderDate.
+
+Câu 3: Tìm khách hàng có đơn hàng lớn nhất (2 điểm)
+Hiển thị:
+
+Tên khách hàng (customerName)
+Số lượng đơn hàng lớn nhất mà khách hàng đã đặt.
+Gợi ý: Sử dụng MAX() kết hợp với GROUP BY.
+
+Câu 4: Thống kê nhân viên và văn phòng làm việc (3 điểm)
+Hiển thị:
+
+Tên nhân viên (lastName)
+Chức vụ (jobTitle)
+Tên thành phố nơi văn phòng nhân viên đang làm việc.
+Chỉ lấy thông tin của những nhân viên có chức vụ là 'Sales Rep' và làm việc tại văn phòng ở khu vực Châu Âu.
+
+Gợi ý: Kết hợp bảng employees và offices.
+
+Câu 5: Cập nhật thông tin đơn hàng giao trễ (2 điểm)
+Cập nhật cột comments của các đơn hàng có shippedDate muộn hơn requiredDate với nội dung 'Shipped Late'.
+
+Câu 6: Tìm dòng sản phẩm có tổng doanh thu cao nhất (3 điểm)
+Hiển thị:
+
+Dòng sản phẩm (productLine)
+Mô tả dòng sản phẩm (textDescription)
+Tổng doanh thu của dòng sản phẩm (tính từ quantityOrdered * priceEach).
+Chỉ lấy dòng sản phẩm có doanh thu cao nhất.
+
+Gợi ý: Sử dụng ORDER BY kết hợp với LIMIT.

@@ -1,0 +1,22 @@
+Câu 1: Tổng tiền hàng tồn kho (2 điểm)
+Viết một câu SQL để đưa ra tên dòng sản phẩm và tổng tiền hàng tồn (tính bằng buyPrice * quantityInStock) của từng dòng sản phẩm.
+Gợi ý: Kết hợp bảng products và productlines.
+
+Câu 2: Tìm dòng sản phẩm bán ít và bán nhiều nhất (2 điểm)
+Viết một câu SQL để đưa ra tên dòng sản phẩm, mô tả, tổng số lượng đã bán, và thêm một cột note:
+
+Best Buy: dòng sản phẩm có tổng số lượng đã bán lớn nhất.
+Worst Buy: dòng sản phẩm có tổng số lượng đã bán nhỏ nhất.
+Gợi ý: Kết hợp products, productlines, và orderdetails.
+
+Câu 3: Khách hàng có nguy cơ nợ xấu (3 điểm)
+Liệt kê các tên khách hàng có tổng số tiền thanh toán trong bảng payments nhỏ hơn 50,000 USD.
+
+Câu 4: Sản phẩm cần xử lý hoàn kho (2 điểm)
+Hiển thị mã sản phẩm và tổng số lượng cần hoàn kho của các sản phẩm trong các đơn hàng bị hủy (status = 'Cancelled'). Kết quả được sắp xếp tăng dần theo mã sản phẩm.
+Gợi ý: Kết hợp orders và orderdetails.
+
+Câu 5: Đơn hàng trong tháng đầu tiên (1 điểm)
+Cập nhật cột comments của tất cả các đơn hàng được đặt trong tháng đầu tiên công ty hoạt động với nội dung "first order".
+Gợi ý: Sử dụng bảng orders.
+

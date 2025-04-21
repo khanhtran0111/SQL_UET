@@ -1,0 +1,53 @@
+Thong tin sinh vien
+Ho va Ten: Tran Gia Khanh
+MSSV: 23021599
+
+Cau 1:
+SELECT productLine AS LineName, SUM(buyPrice * quantityInStock) AS TotalStockValue
+FROM products
+GROUP BY productLine;
+
+Cau 2:
+Vân Vũ
+WITH salesData AS (
+    SELECT p.productLine, p.textDescription, SUM(o.quantityOrdered) AS totalSold
+    FROM productlines p
+    JOIN products pr ON p.productLine = pr.productLine
+    JOIN orderdetails o ON pr.productCode = o.productCode
+    GROUP BY p.productLine, p.textDescription
+),
+minMaxData AS (
+    SELECT MIN(totalSold) AS minSold, MAX(totalSold) AS maxSold
+    FROM salesData
+)
+SELECT sd.productLine, sd.textDescription, sd.totalSold,
+CASE 
+	WHEN sd.totalSold = mm.minSold THEN 'Worst buy'
+        WHEN sd.totalSold = mm.maxSold THEN 'Best buy'
+END AS note
+FROM salesData sd
+LEFT JOIN minMaxData mm ON sd.totalSold = mm.minSold OR sd.totalSold = mm.maxSold
+WHERE sd.totalSold = mm.minSold OR sd.totalSold = mm.maxSold;
+
+Cau 3:
+SELECT c.customerName, SUM(oi.priceEach * oi.quantityOrdered) AS totalDebt
+FROM customers AS c
+JOIN orders AS o ON c.customerNumber = o.customerNumber
+JOIN orderdetails AS oi ON o.orderNumber = oi.orderNumber
+GROUP BY c.customerNumber, c.customerName
+HAVING totalDebt > 50000;
+
+
+Cau 4:
+SELECT od.productCode, SUM(od.quantityOrdered) AS RestockQuantity
+FROM orderdetails AS od
+JOIN orders AS o ON od.orderNumber = o.orderNumber
+WHERE o.status = 'Cancelled'
+GROUP BY od.productCode
+ORDER BY od.productCode ASC;
+
+Cau 5:
+UPDATE orders
+SET comments = 'first order'
+WHERE MONTH(orderDate) = (SELECT MONTH(MIN(orderDate)) FROM orders)
+AND YEAR(orderDate) = (SELECT YEAR(MIN(orderDate)) FROM orders);
